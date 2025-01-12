@@ -1,0 +1,39 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "backend"
+		},
+		{
+			"path": "frontend"
+		}
+	],
+
+	"settings": {
+    "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.stylelint": "explicit"
+    },
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "json.format.keepLines": true,
+    "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[css]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[python]": {
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit"
+    }
+    },
+    "ruff.enable": true,
+    "mypy-type-checker.args": ["--config-file=pyproject.toml"],
+    "cSpell.words": ["sqlalchemy", "werkzeug"]
+}
+}
