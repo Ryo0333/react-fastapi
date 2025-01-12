@@ -45,7 +45,7 @@ def get_sales_by_year_by_department(db: Session, year: int, department: str):
         db.query(models.Sales)
         .filter(models.Sales.year == year)
         .filter(models.Sales.department == department)
-        .all()
+        .first()
     )
 
 
@@ -54,6 +54,16 @@ def create_sales(db: Session, sales: schemas.SalesCreate):
         year=sales.year, department=sales.department, sales=sales.sales
     )
     db.add(db_sales)
+    db.commit()
+    db.refresh(db_sales)
+    return db_sales
+
+
+def update_sales(db: Session, sales: schemas.SalesUpdate):
+    db_sales = get_sales_by_year_by_department(
+        db, year=sales.year, department=sales.department
+    )
+    db_sales.sales = sales.sales
     db.commit()
     db.refresh(db_sales)
     return db_sales

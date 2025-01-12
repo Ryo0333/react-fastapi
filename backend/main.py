@@ -68,3 +68,13 @@ def read_sales(db: Session = Depends(get_db)):
 def read_sales_by_year(year: int, db: Session = Depends(get_db)):
     sales = crud.get_sales_by_year(db, year=year)
     return sales
+
+
+@app.put("/sales/update", response_model=schemas.Sales)
+def update_sales(sales: schemas.SalesUpdate, db: Session = Depends(get_db)):
+    db_sales = crud.get_sales_by_year_by_department(
+        db, year=sales.year, department=sales.department
+    )
+    if db_sales is None:
+        raise HTTPException(status_code=404, detail="Sales Info not found")
+    return crud.update_sales(db=db, sales=sales)
