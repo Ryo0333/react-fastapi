@@ -1,12 +1,11 @@
 import React from "react";
 import { Chart as ChartJS, registerables } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import { faker } from "@faker-js/faker";
 import AspectRatio from "@mui/joy/AspectRatio";
 import { Grid } from "@mui/material";
 ChartJS.register(...registerables);
 
-const BarChart = (props) => {
+export const BarChart = (props) => {
   const { data } = props;
   console.log(data);
   if (data === undefined || data.length === 0) {
@@ -47,5 +46,3 @@ const BarChart = (props) => {
     </>
   );
 };
-
-export default BarChart;

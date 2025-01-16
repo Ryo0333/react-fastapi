@@ -4,7 +4,7 @@ import ReactFileReader from "react-file-reader";
 import { Button } from "@mui/material";
 import { useCreateSales } from "../hooks/useCreateSales";
 
-const ReadCsv = (props) => {
+export const ReadCsv = (props) => {
   const { handleDataChange } = props;
   const { onClickCreateSales } = useCreateSales();
   const uploadFile = (files) => {
@@ -25,5 +25,3 @@ const ReadCsv = (props) => {
     </>
   );
 };
-
-export default ReadCsv;

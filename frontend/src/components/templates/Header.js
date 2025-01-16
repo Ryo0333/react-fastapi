@@ -2,11 +2,11 @@ import React, { useContext } from "react";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import BasicMenu from "../elements/BasicMenu";
+import { BasicMenu } from "../elements/BasicMenu";
 import { Grid } from "@mui/material";
 import { LoginUserContext } from "../providers/LoginUserProvider";
 
-const Header = (props) => {
+export const Header = (props) => {
   const { loginUser } = useContext(LoginUserContext);
   return (
     <AppBar position="static">
@@ -26,5 +26,3 @@ const Header = (props) => {
     </AppBar>
   );
 };
-
-export default Header;

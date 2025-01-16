@@ -1,5 +1,4 @@
 import axios from "axios";
-import React from "react";
 
 export const useReadSales = () => {
   const baseEndpoint = "http://127.0.0.1:8000/sales/";

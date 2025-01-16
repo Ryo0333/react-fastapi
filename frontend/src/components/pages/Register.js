@@ -3,7 +3,7 @@ import { Container, Box, Typography, TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useRegister } from "../hooks/useRegister";
 
-const Register = () => {
+export const Register = () => {
   const { register } = useRegister();
   const [user, setUser] = useState({
     username: "",
@@ -71,5 +71,3 @@ const Register = () => {
     </>
   );
 };
-
-export default Register;

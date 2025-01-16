@@ -2,7 +2,7 @@ import React from "react";
 import { useLocation, Link } from "react-router-dom";
 import { Container, Box, Typography } from "@mui/material";
 
-const RegisterSucceeded = () => {
+export const RegisterSucceeded = () => {
   const { state } = useLocation();
   return (
     <div>
@@ -24,5 +24,3 @@ const RegisterSucceeded = () => {
     </div>
   );
 };
-
-export default RegisterSucceeded;

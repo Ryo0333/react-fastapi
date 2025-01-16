@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, InputLabel, MenuItem, Select } from "@mui/material";
 
-const SelectYear = (props) => {
+export const SelectYear = (props) => {
   const { handleYearChange } = props;
   const handleChange = (e) => {
     handleYearChange(e.target.value);
@@ -25,5 +25,3 @@ const SelectYear = (props) => {
     </>
   );
 };
-
-export default SelectYear;

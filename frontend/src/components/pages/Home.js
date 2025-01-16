@@ -1,14 +1,14 @@
 import React, { useContext } from "react";
-import Header from "../templates/Header";
-import { Navigate, useLocation } from "react-router-dom";
+import { Header } from "../templates/Header";
+import { Navigate } from "react-router-dom";
 import { useState } from "react";
 import { LoginUserContext } from "../providers/LoginUserProvider";
-import ReadCsv from "../elements/ReadCsv";
-import BarChart from "../elements/BarChart";
-import SelectYear from "../elements/SelectYear";
-import ReadDatabase from "../elements/ReadDatabase";
+import { ReadCsv } from "../elements/ReadCsv";
+import { BarChart } from "../elements/BarChart";
+import { SelectYear } from "../elements/SelectYear";
+import { ReadDatabase } from "../elements/ReadDatabase";
 
-const Home = () => {
+export const Home = () => {
   const { isLogined } = useContext(LoginUserContext);
   const [data, setData] = useState([]);
   const handleDataChange = (newData) => {
@@ -34,5 +34,3 @@ const Home = () => {
     );
   }
 };
-
-export default Home;

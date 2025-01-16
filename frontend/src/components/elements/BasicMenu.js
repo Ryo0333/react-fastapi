@@ -4,7 +4,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { useNavigate } from "react-router-dom";
 
-export default function BasicMenu() {
+export const BasicMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const navigate = useNavigate();
@@ -48,4 +48,4 @@ export default function BasicMenu() {
       </Menu>
     </div>
   );
-}
+};

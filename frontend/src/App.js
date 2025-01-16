@@ -1,17 +1,16 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Home from "./components/pages/Home";
-import Login from "./components/pages/Login";
-import LoginFailed from "./components/pages/LoginFailed";
-import Register from "./components/pages/Register";
-import { Routes, Route, Navigate } from "react-router-dom";
-import NotFound from "./components/pages/NotFound";
+import { Home } from "./components/pages/Home";
+import { Login } from "./components/pages/Login";
+import { LoginFailed } from "./components/pages/LoginFailed";
+import { Register } from "./components/pages/Register";
+import { Routes, Route } from "react-router-dom";
+import { NotFound } from "./components/pages/NotFound";
 import { LoginUserProvider } from "./components/providers/LoginUserProvider";
-import Footer from "./components/templates/Footer";
-import RegisterSucceeded from "./components/pages/RegisterSucceeded";
-import RegisterFailed from "./components/pages/RegisterFailed";
+import { Footer } from "./components/templates/Footer";
+import { RegisterSucceeded } from "./components/pages/RegisterSucceeded";
+import { RegisterFailed } from "./components/pages/RegisterFailed";
 
-function App() {
+export const App = () => {
   return (
     <LoginUserProvider>
       <div className="App">
@@ -28,6 +27,4 @@ function App() {
       <Footer />
     </LoginUserProvider>
   );
-}
-
-export default App;
+};

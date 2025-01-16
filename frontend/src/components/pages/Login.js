@@ -3,7 +3,7 @@ import { Container, Box, Typography, TextField, Button } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useLogin } from "../hooks/useLogin";
 
-const Login = () => {
+export const Login = () => {
   const { login } = useLogin();
   const [user, setUser] = useState({
     username: "",
@@ -70,5 +70,3 @@ const Login = () => {
     </>
   );
 };
-
-export default Login;

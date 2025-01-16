@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useReadSales } from "../hooks/useReadSales";
 
-const ReadDatabase = (props) => {
+export const ReadDatabase = (props) => {
   const { year, handleDataChange } = props;
   const { onClickReadSales } = useReadSales();
   useEffect(() => {
@@ -39,5 +39,3 @@ const ReadDatabase = (props) => {
   }, [year]);
   return <div></div>;
 };
-
-export default ReadDatabase;
