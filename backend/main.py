@@ -31,7 +31,7 @@ def get_db():
         db.close()
 
 
-@app.post("/users/", response_model=schemas.User)
+@app.post("/users", response_model=schemas.User)
 def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_name(db, name=user.name)
     if db_user:
@@ -40,7 +40,7 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     return crud.create_user(db=db, user=user)
 
 
-@app.get("/users/", response_model=schemas.User)
+@app.get("/users", response_model=schemas.User)
 def read_user(name: str, password: str, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_name_by_password(db, name=name, password=password)
     if db_user is None:
@@ -48,7 +48,7 @@ def read_user(name: str, password: str, db: Session = Depends(get_db)):
     return db_user
 
 
-@app.post("/sales/", response_model=schemas.Sales)
+@app.post("/sales", response_model=schemas.Sales)
 def create_sales(sales: schemas.SalesCreate, db: Session = Depends(get_db)):
     db_sales = crud.get_sales_by_year_by_department(
         db, year=sales.year, department=sales.department
@@ -58,7 +58,7 @@ def create_sales(sales: schemas.SalesCreate, db: Session = Depends(get_db)):
     return crud.create_sales(db=db, sales=sales)
 
 
-@app.get("/sales/", response_model=list[schemas.Sales])
+@app.get("/sales", response_model=list[schemas.Sales])
 def read_sales(db: Session = Depends(get_db)):
     sales = crud.get_sales(db)
     return sales

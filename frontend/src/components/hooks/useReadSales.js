@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const useReadSales = () => {
-  const baseEndpoint = "http://127.0.0.1:8000/sales/";
+  const baseEndpoint = "http://127.0.0.1:8000/sales";
 
   const onClickReadSales = async (year) => {
     const endpoint = baseEndpoint + year;
