@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "/Users/ryo/Documents/react-fastapi/backend/.venv/lib/python3.11/site-packages"
+    ]
+}
