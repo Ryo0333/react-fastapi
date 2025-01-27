@@ -1,6 +1,6 @@
 from sqlalchemy import Boolean, Column, Float, Integer, String
 
-from .database import Base
+from api.database import Base
 
 
 class User(Base):
@@ -10,6 +10,7 @@ class User(Base):
     name = Column(String, unique=True, index=True)
     password = Column(String)
     is_active = Column(Boolean, default=True)
+    role = Column(String)
 
 
 class Sales(Base):
