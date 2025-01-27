@@ -7,6 +7,7 @@ import { ReadCsv } from "../elements/ReadCsv";
 import { BarChart } from "../elements/BarChart";
 import { SelectYear } from "../elements/SelectYear";
 import { ReadDatabase } from "../elements/ReadDatabase";
+import { UpdateSalesForm } from "../elements/UpdateSalesForm";
 
 export const Home = () => {
   const { isLogined } = useContext(LoginUserContext);
@@ -26,6 +27,7 @@ export const Home = () => {
         <Header />
         <h3>CSVをデータベースへ格納</h3>
         <ReadCsv handleDataChange={handleDataChange} />
+        <UpdateSalesForm />
         <SelectYear handleYearChange={handleYearChange} />
         <ReadDatabase year={year} handleDataChange={handleDataChange} />
         <h3>グラフ表示</h3>
