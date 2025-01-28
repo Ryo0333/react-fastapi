@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from api import crud, models, schemas
 from api.database import SessionLocal, engine
+from api.middleware.middleware import CustomAdminMiddleware
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -21,8 +22,9 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+app.add_middleware(CustomAdminMiddleware)
 
-# Dependency
+
 def get_db():
     db = SessionLocal()
     try:
