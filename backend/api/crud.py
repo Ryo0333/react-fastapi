@@ -32,6 +32,14 @@ def create_user(db: Session, user: schemas.UserCreate):
     return db_user
 
 
+def create_admin(db: Session, user: schemas.UserCreate):
+    db_user = models.User(name=user.name, password=user.password, role="admin")
+    db.add(db_user)
+    db.commit()
+    db.refresh(db_user)
+    return db_user
+
+
 def get_sales(db: Session):
     return db.query(models.Sales).all()
 

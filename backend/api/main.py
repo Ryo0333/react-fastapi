@@ -50,6 +50,14 @@ def read_user(name: str, password: str, db: Session = Depends(get_db)):
     return db_user
 
 
+@app.post("/admin", response_model=schemas.User)
+def create_admin(user: schemas.UserCreate, db: Session = Depends(get_db)):
+    db_user = crud.get_user_by_name(db, name=user.name)
+    if db_user:
+        raise HTTPException(status_code=400, detail="Name already registered")
+    return crud.create_admin(db=db, user=user)
+
+
 @app.post("/sales", response_model=schemas.Sales)
 def create_sales(sales: schemas.SalesCreate, db: Session = Depends(get_db)):
     db_sales = crud.get_sales_by_year_by_department(

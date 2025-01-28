@@ -10,7 +10,7 @@ class User(Base):
     name = Column(String, unique=True, index=True)
     password = Column(String)
     is_active = Column(Boolean, default=True)
-    role = Column(String)
+    role = Column(String, default="user")
 
 
 class Sales(Base):
