@@ -1,12 +1,12 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from api import models
-from api.database import engine
-from api.middleware.middleware import AdminMiddleware
-from api.router import api_router
+from api.endpoints.router import api_router
+from db import database
+from db.session import engine
+from services.middleware.middleware import AdminMiddleware
 
-models.Base.metadata.create_all(bind=engine)
+database.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 origins = [
