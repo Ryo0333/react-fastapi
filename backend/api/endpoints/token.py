@@ -4,7 +4,6 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordRequestForm
 from sqlalchemy.orm import Session
 
-from api.crud import users
 from api.crud.users import get_user_by_name
 from api.endpoints.deps import get_db
 from core.config import settings
@@ -31,9 +30,6 @@ def login_for_access_token(
             detail="Incorrect username or password",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    user = users.get_user_by_name_by_password(
-        name=form_data.username, password=form_data.password, db=db
-    )
     access_token_expires = timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": user.name, "role": user.role},

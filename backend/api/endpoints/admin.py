@@ -22,8 +22,8 @@ def create_admin(user: UserCreate, db: Session = Depends(get_db)):
 @admin_router.get("/admin", response_model=UserInDB)
 def read_admin(name: str, password: str, db: Session = Depends(get_db)):
     db_user = admin.get_admin_by_name(db, name=name)
-    if db_user:
-        raise HTTPException(status_code=400, detail="Name already registered")
+    if db_user is None:
+        raise HTTPException(status_code=404, detail="User not found")
     if not verify_password(password, db_user.hashed_password):
         raise HTTPException(status_code=401, detail="Incorrect password")
     return admin.get_admin(db, name=name)

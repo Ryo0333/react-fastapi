@@ -9,14 +9,14 @@ def get_sales(db: Session):
 
 
 def get_sales_by_year(db: Session, year: int):
-    return db.query(SalesTable).filter(Sales.year == year).all()
+    return db.query(SalesTable).filter(SalesTable.year == year).all()
 
 
 def get_sales_by_year_by_department(db: Session, year: int, department: str):
     return (
         db.query(SalesTable)
-        .filter(Sales.year == year)
-        .filter(Sales.department == department)
+        .filter(SalesTable.year == year)
+        .filter(SalesTable.department == department)
         .first()
     )
 

@@ -10,25 +10,16 @@ def get_users(db: Session):
 
 
 def get_user(db: Session, user_id: int):
-    return db.query(UserTable).filter(UserInDB.id == user_id).first()
+    return db.query(UserTable).filter(UserTable.id == user_id).first()
 
 
 def get_user_by_name(db: Session, name: str) -> UserInDB:
-    return db.query(UserTable).filter(UserInDB.name == name).first()
-
-
-def get_user_by_name_by_password(db: Session, name: str, password: str):
-    return (
-        db.query(UserTable)
-        .filter(UserInDB.name == name)
-        .filter(UserInDB.hashed_password == password)
-        .first()
-    )
+    return db.query(UserTable).filter(UserTable.name == name).first()
 
 
 def create_user(db: Session, user: UserCreate) -> UserInDB:
     hashed_password = get_password_hash(user.password)
-    db_user = UserInDB(name=user.name, password=hashed_password, role="user")
+    db_user = UserTable(name=user.name, hashed_password=hashed_password, role="user")
     db.add(db_user)
     db.commit()
     db.refresh(db_user)
