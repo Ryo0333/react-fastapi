@@ -1,19 +1,20 @@
 from sqlalchemy.orm import Session
 
+from models.sales import SalesTable
 from schemas.sales import Sales, SalesCreate, SalesUpdate
 
 
 def get_sales(db: Session):
-    return db.query(Sales).all()
+    return db.query(SalesTable).all()
 
 
 def get_sales_by_year(db: Session, year: int):
-    return db.query(Sales).filter(Sales.year == year).all()
+    return db.query(SalesTable).filter(Sales.year == year).all()
 
 
 def get_sales_by_year_by_department(db: Session, year: int, department: str):
     return (
-        db.query(Sales)
+        db.query(SalesTable)
         .filter(Sales.year == year)
         .filter(Sales.department == department)
         .first()
