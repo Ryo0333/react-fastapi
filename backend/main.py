@@ -4,7 +4,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from api.endpoints.router import api_router
 from db import database
 from db.session import engine
-from services.middleware.middleware import AdminMiddleware
+from services.middleware.auth import JwtAuthMiddleware
 
 database.Base.metadata.create_all(bind=engine)
 
@@ -13,7 +13,7 @@ origins = [
     "http://localhost:3000",
 ]
 
-app.add_middleware(AdminMiddleware)
+app.add_middleware(JwtAuthMiddleware)
 
 app.add_middleware(
     CORSMiddleware,
