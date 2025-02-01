@@ -7,7 +7,6 @@ from db.session import engine
 from services.middleware.auth import JwtAuthMiddleware
 
 database.Base.metadata.create_all(bind=engine)
-
 app = FastAPI()
 origins = [
     "http://localhost:3000",

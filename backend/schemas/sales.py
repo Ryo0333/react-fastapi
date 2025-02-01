@@ -12,7 +12,8 @@ class SalesCreate(SalesBase):
 
 
 class SalesUpdate(SalesBase):
-    pass
+    class Config:
+        orm_mode = True
 
 
 class Sales(SalesBase):

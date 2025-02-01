@@ -7,6 +7,7 @@ from api.crud.users import get_user_by_name
 from core.config import settings
 from db.session import SessionLocal
 from schemas.token import TokenData
+from schemas.user import UserInDB
 
 
 def get_db():
@@ -42,3 +43,13 @@ def get_current_user(
     if user is None:
         raise credentials_exception
     return user
+
+
+def get_current_admin_user(
+    current_user: UserInDB = Depends(get_current_user),
+):
+    if current_user.role != "admin":
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN, detail="Not enough permissions"
+        )
+    return current_user

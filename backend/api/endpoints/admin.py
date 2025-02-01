@@ -3,12 +3,12 @@ from sqlalchemy.orm import Session
 
 from api.crud import admin
 from api.crud import sales as sales_crud
-from api.endpoints.deps import get_db
+from api.endpoints.deps import get_current_admin_user, get_db
 from core.security import verify_password
 from schemas.sales import Sales, SalesCreate, SalesUpdate
 from schemas.user import UserCreate, UserInDB
 
-admin_router = APIRouter()
+admin_router = APIRouter(dependencies=[Depends(get_current_admin_user)])
 
 
 @admin_router.post("/admin", response_model=UserInDB)

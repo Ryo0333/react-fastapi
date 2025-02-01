@@ -1,7 +1,7 @@
 from sqlalchemy.orm import Session
 
 from models.sales import SalesTable
-from schemas.sales import Sales, SalesCreate, SalesUpdate
+from schemas.sales import SalesCreate, SalesUpdate
 
 
 def get_sales(db: Session):
@@ -22,7 +22,9 @@ def get_sales_by_year_by_department(db: Session, year: int, department: str):
 
 
 def create_sales(db: Session, sales: SalesCreate):
-    db_sales = Sales(year=sales.year, department=sales.department, sales=sales.sales)
+    db_sales = SalesTable(
+        year=sales.year, department=sales.department, sales=sales.sales
+    )
     db.add(db_sales)
     db.commit()
     db.refresh(db_sales)
