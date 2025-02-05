@@ -8,10 +8,10 @@ export const useLogin = () => {
   const navigate = useNavigate();
   const login = (user) => {
     console.log("ログイン処理開始");
-    const endpoint = "http://127.0.0.1:8000/users";
+    const endpoint = "http://127.0.0.1:8000/token";
     const queries = { name: user.username, password: user.password };
     axios
-      .get(endpoint, { params: queries })
+      .post(endpoint, { params: queries })
       .then((res) => {
         console.log(res.data);
         console.log(res.data[0]);

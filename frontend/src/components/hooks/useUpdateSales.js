@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const useUpdateSales = () => {
-  const endpoint = "http://127.0.0.1:8000/sales";
+  const endpoint = "http://127.0.0.1:8000/admin/sales";
 
   const onSubmitUpdateSales = (data) => {
     const queries = {
